@@ -4,6 +4,8 @@ import * as actions from "./todo.actions";
 
 export const initialState: Todo[] = [
     new Todo ('Vencer a Thanos'),
+    new Todo ('Robar las gemas del infinito'),
+    new Todo ('Usar las gemas del infinito para destruir a la mitad del universo')
 ];
 
 const _todoReducer = createReducer(initialState,
@@ -39,6 +41,7 @@ const _todoReducer = createReducer(initialState,
             completed: completed
         };
     })),
+    on(actions.clearCompleted, (state) => state.filter(todo => !todo.completed))
 );
 
 export function todoReducer(state: any, action: any) {
